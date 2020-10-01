@@ -1,2 +1,1 @@
-# stader-lander-anthonwellsjo
-stader-lander-anthonwellsjo created by GitHub Classroom
+# app-design-typescript-json
