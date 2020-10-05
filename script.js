@@ -44,7 +44,24 @@ function loadApp() {
 }
 var page = {
     create: function () {
-        return ("\n            <img id=\"backgroundImg\"></img>\n            <div id=\"spinnerHolder\"><img id=\"spinner\" src=\"https://media0.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif?cid=ecf05e471rg1w4iot45hb8537piyun4xtfq7tv4yv4qqrq3r&rid=giphy.gif\"></img></div>\n            <div id=\"pageHolder\">\n                <div id=\"header\">\n                    <div id=\"appBtns\" src='./src/img/startBtn.png'>\n                        <div class=\"button\" id=\"magicButton1-3\">\n                            <div id=\"magicButton1-2\">\n                                <div id=\"magicButton1-1\">\n                                    " + appData.buttons[1].icon + "\n                                </div>\n                            </div>\n                        </div>\n                        <div class=\"button\" id=\"magicButton2-3\">\n                            <div id=\"magicButton2-2\">\n                                <div id=\"magicButton2-1\">\n                                    " + appData.buttons[2].icon + "\n                                </div>\n                            </div>\n                        </div>\n                        <div class=\"button\" id=\"magicButton3-3\">\n                            <div id=\"magicButton3-2\">\n                                <div id=\"magicButton3-1\">\n                                    " + appData.buttons[3].icon + "\n                                </div>\n                            </div>\n                        </div>\n                        <div class=\"button\" id=\"magicButton4-3\">\n                            <div id=\"magicButton4-2\">\n                                <div id=\"magicButton4-1\">\n                                    " + appData.buttons[4].icon + "\n                                </div>\n                            </div>\n                        </div>\n                    </div>\n                </div>\n                <div id=\"outerFrame\">\n                    <div id=\"circleHolder\">\n                        <div id=\"yellowBall\"></div>\n                        <div id=\"blueBall\"></div>\n                        <div id=\"greenBall\"></div>\n                        <div id=\"redBall\"></div>\n                    </div>\n                    <div id=\"backGround\" class=\"animate\"></div>\n                </div>\n                </div>\n                </div>\n            </div>\n            ");
+        return ("\n            <img id=\"backgroundImg\"></img>\n            <div id=\"spinnerHolder\"><img id=\"spinner\" src=\"https://media0.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif?cid=ecf05e471rg1w4iot45hb8537piyun4xtfq7tv4yv4qqrq3r&rid=giphy.gif\"></img></div>\n            <div id=\"pageHolder\">\n                \n                    <div id=\"outerFrame\">\n                        <div id=\"header\">\n                            <div id=\"appBtns\" src='./src/img/startBtn.png'>\n                                <div class=\"button\" id=\"magicButton1-3\">\n                                    <div id=\"magicButton1-2\">\n                                        <div id=\"magicButton1-1\">\n                                            <h2 class=\"btnHeader\">\n                                                " + appData.buttons[1].icon + "\n                                            </h2>\n                                        </div>\n                                    </div>\n                                </div>\n                                <div class=\"button\" id=\"magicButton2-3\">\n                                    <div id=\"magicButton2-2\">\n                                        <div id=\"magicButton2-1\">\n                                            <h2 class=\"btnHeader\">\n                                                " + appData.buttons[2].icon + "\n                                            </h2>\n                                        </div>\n                                    </div>\n                                </div>\n                                <div class=\"button\" id=\"magicButton3-3\">\n                                    <div id=\"magicButton3-2\">\n                                        <div id=\"magicButton3-1\">\n                                            <h2 class=\"btnHeader\">\n                                                " + appData.buttons[3].icon + "\n                                            </h2>\n                                        </div>\n                                    </div>\n                                </div>\n                                <div class=\"button\" id=\"magicButton4-3\">\n                                    <div id=\"magicButton4-2\">\n                                        <div id=\"magicButton4-1\">\n                                            <h2 class=\"btnHeader\">\n                                                " + appData.buttons[4].icon + "\n                                            </h2>\n                                        </div>\n                                    </div>\n                                </div>\n                            </div>\n                        </div>\n                        <br><br>\n                        <div id=\"backGround\" class=\"animate\">\n                            <div id=\"pageContent\">\n                                <header id=\"contentHeader\">\n                                </header>\n                                <div id=\"content\"></div>\n                                <img id=\"contentImg></div>\n                            </div>\n                        </div>\n                        </div>\n                    </div>\n                    </div>\n                \n            </div>\n            ");
+    },
+    renderNewPage: function (page) {
+        setTimeout(function () {
+            document.getElementById("contentHeader").innerHTML = "<h1>" + (function () { if (appData.currentPage !== undefined) {
+                return appData.currentPage.header;
+            }
+            else {
+                return "";
+            } })() + "</h1>";
+            document.getElementById("content").innerHTML = "<p>" + (function () { if (appData.currentPage !== undefined) {
+                return appData.currentPage.content;
+            }
+            else {
+                return "";
+            } })() + "</p>";
+            document.getElementById("contentImg").setAttribute("src", "https://picsum.photos/200/300");
+        }, 1000);
     },
     closeAllOtherButtonsThan: function (button) {
         var buttonsToTurnOff = [];
@@ -79,29 +96,10 @@ var page = {
         }
     },
     openButton: function (button) { return __awaiter(_this, void 0, void 0, function () {
-        var bip, boop;
         return __generator(this, function (_a) {
             console.log("open button func", page.aButtonIsOpen());
             if (!page.aButtonIsOpen()) {
                 button.open = true;
-                bip = new Audio('./src/audio/bip.wav');
-                boop = new Audio('./src/audio/bop2.wav');
-                setTimeout(function () { bip.play(); }, 300);
-                setTimeout(function () { bip.play(); }, 800);
-                document.getElementById("magicButton" + button.name + "-1").setAttribute("class", "open");
-                setTimeout(function () {
-                    document.getElementById("magicButton" + button.name + "-2").setAttribute("class", "open");
-                }, 500);
-                setTimeout(function () {
-                    boop.play();
-                    console.log(button.backGroundColor);
-                    document.getElementById("backGround").setAttribute("class", "" + button.backGroundColor);
-                    document.getElementById("backGround").classList.add("show");
-                }, 1300);
-                setTimeout(function () {
-                    document.getElementById("magicButton" + button.name + "-3").classList.add("open");
-                    document.getElementById("magicButton" + button.name + "-3").classList.add("animate");
-                }, 1500);
             }
             return [2 /*return*/];
         });
@@ -114,6 +112,34 @@ var page = {
             }
         });
         return open;
+    },
+    animateButton: function (button) {
+        var bip = new Audio('./src/audio/bip.wav');
+        var boop = new Audio('./src/audio/bop2.wav');
+        page.hidePageContent();
+        setTimeout(function () { bip.play(); }, 300);
+        setTimeout(function () { bip.play(); }, 800);
+        document.getElementById("magicButton" + button.name + "-1").setAttribute("class", "open");
+        setTimeout(function () {
+            document.getElementById("magicButton" + button.name + "-2").setAttribute("class", "open");
+        }, 500);
+        setTimeout(function () {
+            boop.play();
+            console.log(button.backGroundColor);
+            document.getElementById("backGround").setAttribute("class", "" + button.backGroundColor);
+            document.getElementById("backGround").classList.add("show");
+            page.showPageContent();
+        }, 1300);
+        setTimeout(function () {
+            document.getElementById("magicButton" + button.name + "-3").classList.add("open");
+            document.getElementById("magicButton" + button.name + "-3").classList.add("animate");
+        }, 1500);
+    },
+    hidePageContent: function () {
+        document.getElementById("pageContent").removeAttribute("class");
+    },
+    showPageContent: function () {
+        document.getElementById("pageContent").setAttribute("class", "show");
     }
 };
 var appData = {
@@ -121,7 +147,7 @@ var appData = {
         1: {
             name: 1,
             icon: "Y",
-            header: "Yellow Button",
+            header: "Yellow Page",
             content: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus recusandae atque non ipsum repudiandae excepturi, praesentium libero perspiciatis cumque magnam rerum ratione molestias laborum voluptas repellendus eum, optio laudantium itaque quasi eos, commodi sit ad iure magni. Distinctio itaque, consequuntur culpa dicta fugiat fugit vitae.",
             open: false,
             backGroundColor: "yellow"
@@ -129,7 +155,7 @@ var appData = {
         2: {
             name: 2,
             icon: "B",
-            header: "Blue Button",
+            header: "Blue Page",
             content: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus recusandae atque non ipsum repudiandae excepturi, praesentium libero perspiciatis cumque magnam rerum ratione molestias laborum voluptas repellendus eum, optio laudantium itaque quasi eos, commodi sit ad iure magni. Distinctio itaque, consequuntur culpa dicta fugiat fugit vitae.",
             open: false,
             backGroundColor: "blue"
@@ -137,7 +163,7 @@ var appData = {
         3: {
             name: 3,
             icon: "G",
-            header: "Green Button",
+            header: "Green Page",
             content: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus recusandae atque non ipsum repudiandae excepturi, praesentium libero perspiciatis cumque magnam rerum ratione molestias laborum voluptas repellendus eum, optio laudantium itaque quasi eos, commodi sit ad iure magni. Distinctio itaque, consequuntur culpa dicta fugiat fugit vitae.",
             open: false,
             backGroundColor: "green"
@@ -145,12 +171,13 @@ var appData = {
         4: {
             name: 4,
             icon: "R",
-            header: "Red Button",
+            header: "Red Page",
             content: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus recusandae atque non ipsum repudiandae excepturi, praesentium libero perspiciatis cumque magnam rerum ratione molestias laborum voluptas repellendus eum, optio laudantium itaque quasi eos, commodi sit ad iure magni. Distinctio itaque, consequuntur culpa dicta fugiat fugit vitae.",
             open: false,
             backGroundColor: "red"
         }
-    }
+    },
+    currentPage: undefined
 };
 var eventHandlers = {
     onBackgroundLoaded: function () {
@@ -170,6 +197,9 @@ var eventHandlers = {
         });
         page.closeAllOtherButtonsThan(button);
         console.log(button);
+        appData.currentPage = button;
         page.openButton(button);
+        page.animateButton(button);
+        page.renderNewPage(button);
     }
 };

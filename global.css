@@ -39,6 +39,11 @@ body {
   opacity: 0;
 }
 
+#header {
+  margin-top: -100px;
+  width: 70%;
+}
+
 #outerFrame {
   position: absolute;
   left: 0;
@@ -50,6 +55,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
 }
 
 #appBtns {
@@ -57,7 +63,7 @@ body {
   width: 100%;
   height: 150px;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-evenly;
 }
 
@@ -80,7 +86,7 @@ body {
   overflow: hidden;
 }
 #magicButton1-3.open {
-  box-shadow: 15px 15px 10px rgb(180, 145, 2);
+  box-shadow: 15px 15px 10px rgb(126, 123, 113);
   transition: box-shadow 1s;
 }
 #magicButton1-3.open.animate {
@@ -127,7 +133,7 @@ body {
   overflow: hidden;
 }
 #magicButton2-3.open {
-  box-shadow: 15px 15px 10px rgb(31, 65, 158);
+  box-shadow: 15px 15px 10px rgb(126, 123, 113);
   transition: box-shadow 1s;
 }
 #magicButton2-3.animate {
@@ -174,7 +180,7 @@ body {
   overflow: hidden;
 }
 #magicButton3-3.open {
-  box-shadow: 15px 15px 10px #466d52;
+  box-shadow: 15px 15px 10px rgb(126, 123, 113);
   transition: box-shadow 1s;
 }
 #magicButton3-3.open.animate {
@@ -221,9 +227,9 @@ body {
   overflow: hidden;
 }
 #magicButton4-3.open {
-  box-shadow: 15px 15px 10px #ca3f2a;
+  box-shadow: 15px 15px 10px rgb(126, 123, 113);
   transition: box-shadow 1s;
-}
+} 
 #magicButton4-3.animate {
   animation: hovering 2s infinite;
 }
@@ -272,12 +278,14 @@ body {
 /* --------------------------------------------------BACKGROUNDS */
 
 #backGround {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  height: 100%;
+  width: 70%;
+  height: 60%;
   opacity: 0;
   z-index: -1;
+  background-color: white;
+  display: flex;
+  
+  justify-content: center;
 }
 
 #backGround.yellow{
@@ -321,53 +329,26 @@ body {
 }
 
 
-/* -----------------------------------------------CIRCLE ANIMATION */
 
-#circleHolder{
-  position: absolute;
-  height: 200px;
-  width: 200px;
-  border-radius: 100%;
-  display: flex;
+/* ------------------------------------------------------------- CONTENT */
+#pageContent {
+  transition: 1s;
+  opacity: 0;
+  width: 60%;
+}
+#pageContent.show {
+  transition: .3s;
+  opacity: 1;
 }
 
-#yellowBall{
-  position: absolute;
-  top: 0;
-  right: 50%;
-  left: 50%;
-  height: 20px;
-  width: 20px;
-  border-radius: 100%;
-  background-color: yellow;
+#contentHeader {
+  text-align: center;
+  
 }
-#blueBall{
-  position: absolute;
-  bottom: 0;
-  right: 50%;
-  left: 50%;
-  height: 20px;
-  width: 20px;
-  border-radius: 100%;
-  background-color: blue;
+
+
+
+.btnHeader{
+  margin-top: 25px;
 }
-#redBall{
-  position: absolute;
-  top: 50%;
-  bottom: 50%;
-  left: 0;
-  height: 20px;
-  width: 20px;
-  border-radius: 100%;
-  background-color: red;
-}
-#greenBall{
-  position: absolute;
-  top: 50%;
-  bottom: 50%;
-  right: 0;
-  height: 20px;
-  width: 20px;
-  border-radius: 100%;
-  background-color: green;
-}
+
