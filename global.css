@@ -3,23 +3,24 @@
 html,
 body {
   overflow: hidden;
+  font-family: "Peddana", serif;
 }
 
-#backgroundImg{
+#backgroundImg {
   position: absolute;
-  left:0;
-  top:0;
+  left: 0;
+  top: 0;
   z-index: -200;
   opacity: 0;
 }
 
-#backgroundImg.show{
+#backgroundImg.show {
   opacity: 1;
   transition: 1.5s;
   z-index: -200;
 }
 
-#spinnerHolder{
+#spinnerHolder {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -29,31 +30,18 @@ body {
   justify-content: center;
 }
 
-#spinner{
+#spinner {
   transform: scale(0.5);
 }
 
-#spinner.hide{
+#spinner.hide {
   z-index: -100;
   opacity: 0;
 }
 
-/* --------------------------------------------------FONTS */
-
-li, h2, h3, p{
-  font-family: 'Oswald', sans-serif;
-}
-
-li.cityListItem {
-  font-size: 18px;
-}
-
-li.countryListItem {
-  font-size: 19px;
-}
-
-#citiesVisited{
-  font-weight: bold;
+#header {
+  margin-top: -100px;
+  width: 70%;
 }
 
 #outerFrame {
@@ -62,326 +50,305 @@ li.countryListItem {
   right: 0;
   margin-left: auto;
   margin-right: auto;
-  width: 550px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 
-#frame {
-  position: absolute;
-  margin-top: 75px;
-  height: 150px;
-  width: 550px;
-  background-color: rgba(255, 255, 255, 0.20);
-  backdrop-filter: blur(5px);
-  border-radius: 10px;
-  transition: height 0.7s;
-  box-shadow: 1px 1px 35px black;
-  overflow: hidden;
+#appBtns {
   opacity: 0;
+  width: 100%;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
 }
 
-#frame.show {
+#appBtns.show {
   opacity: 1;
-  transition: .3s;
+  transition: 0.3s;
 }
 
-#frame.open {
-  height: 520px;
-  transition: height 0.5s;
-}
+/* ------------------------------------------------------------BUTTONS */
 
-#header {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
+#magicButton1-3 {
+  cursor: pointer;
+  width: 100px;
   height: 100px;
+  background-color: rgb(250, 200, 0);
+  border-radius: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: black;
-  color: white;
+  overflow: hidden;
 }
-
-#header h1 {
-  font-size: 80px;
+#magicButton1-3.open {
+  box-shadow: 15px 15px 10px rgb(126, 123, 113);
+  transition: box-shadow 1s;
 }
-
-/* ----------------------------------------------------------SIDEBAR */
-
-#sidebar {
-  position: absolute;
-  top: 150px;
-  left: 0;
-  height: 400px;
-  width: 200px;
+#magicButton1-3.open.animate {
+  animation: hovering 2s infinite;
 }
-
-#countryHeader {
-  position: absolute;
-  top: -50px;
-  left: 0;
-  right: 0;
-  height: 50px;
-  display: flex;
-  align-items: center;
-  padding-left: 20px;
-}
-
-#countryHeader:hover {
-  color: white;
-}
-
-/* -------------------------------------------CENTER PAGE */
-
-#centerPage {
-  position: absolute;
-  left: 200px;
-  top: 150px;
-  bottom: 0;
-  right: 0;
-}
-
-#cityHeader {
-  position: absolute;
-  top: -50px;
-  left: 0;
-  right: 0;
-  height: 50px;
-  display: flex;
-  align-items: center;
-  padding-left: 20px;
-}
-
-#cityHeaderH2 {
-  transform: scale(0);
-  transition: transform 0.3s;
-}
-
-#cityHeaderH2.show {
-  transform: scale(1);
-  transition: transform 0.3s;
-}
-
-#cityListHolder {
-}
-
-/* ---------------------------------------------------------LISTS */
-
-li {
-  list-style-type: none;
-  padding: 10px;
-  text-align: center;
-  margin: 10px;
-  transform: scale(0);
-  transition: transform 0.3s;
-}
-li.show {
-  transform: scale(1);
-  transition: transform 0.3s;
-}
-
-li:hover {
-  box-shadow: 3px 2px 5px black;
-}
-li.active {
-  box-shadow: 3px 2px 5px black;
-}
-
-#countryOl {
-}
-
-ul {
-}
-
-/* --------------------------------------------------------------MODAL */
-
-#modalHolder {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.cityModal {
-  position: absolute;
-  z-index: 150;
-  width: 400px;
-  height: 250px;
-  background-color: white;
-  border: 3px solid black;
-  transform: translateY(-250%);
-  transition: transform 0.3s;
-}
-
-.cityModal.open {
-  transform: translateY(0);
-  transition: transform 0.3s;
-}
-
-#modalWindowHeader {
-  position: relative;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 40px;
-}
-
-#modalCloseBtnHolder {
-  position: absolute;
-  top: 0;
-  width: 40px;
-  right: 0;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-#closeModalBtn {
-  background-color: white;
-  border: none;
-  padding: 10px;
-  border-radius: 20px;
-  transition: box-shadow 0.3s;
-  outline: none;
-}
-
-#closeModalBtn:hover {
-  box-shadow: 3px 2px 4px grey;
-  transition: box-shadow 0.3s;
-}
-
-#modalContainer {
-  width: 100%;
-  height: 80%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-#modalHeader {
-  position: absolute;
-  width: 80%;
-  top: 0px;
-  height: 65px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-#modalContent {
-  position: absolute;
-  width: 90%;
-  top: 70px;
-  height: 170px;
-  display: grid;
-}
-
-#countryVisitedBtn {
-}
-
-.visited {
-  transition: background-color 0.3s;
-  background-color: red;
-}
-
-#inputHolder {
-  width: 100%;
-  height: 100px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-}
-
-#checkBoxComment {
-  margin-top: -10px;
-}
-
-.backDrop {
-  transform: translateY(-220%);
-  background-color: black;
-  opacity: 0.6;
-  z-index: 100;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-}
-
-.backDrop.show {
-  transform: translateY(0);
-}
-
-/* ---------------------------------------------BORDERS */
-
-#sidebarVerticalBorder {
-  margin-top: -50px;
-  position: absolute;
-  right: 0;
-  width: 3px;
-  height: 0;
-  background-color: black;
-  transition: height 0.7s;
-}
-
-#sidebarVerticalBorder.show {
-  height: 400px;
-  transition: height 0.7s;
-}
-
-#headerBottomBorder {
-  position: absolute;
-  bottom: 0;
-  height: 3px;
-  width: 0;
-  background-color: black;
-  margin-left: -20px;
-  transition: width 0.7s;
-}
-
-#headerBottomBorder.show {
-  width: 530px;
-  transition: width 0.7s;
-}
-
-/* -----------------------------------------------------------INFOBOX */
-
-#cityListHolder {
-  overflow-x: scroll;
-  height: 400px;
-}
-
-#cityListInfoHolder {
-  margin-top: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-#cityListInfoContainer {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  border-radius: 20px;
-  margin-left: 20px;
-  padding: 20px;
+#magicButton1-2 {
   width: 70%;
-  transform: scale(0);
-  transition: transform 0.3s;
-  box-shadow: 3px 2px 3px grey;
+  height: 70%;
+  background-color: rgb(255, 218, 68);
+  border-radius: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-shadow: 15px 15px 10px rgb(180, 145, 2);
+}
+#magicButton1-2.open {
+  box-shadow: none;
+  transition: box-shadow 0.3s linear;
+}
+#magicButton1-1 {
+  width: 55%;
+  height: 55%;
+  background-color: white;
+  border-radius: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 10px 10px 10px rgb(216, 180, 38);
+}
+#magicButton1-1.open {
+  box-shadow: none;
+  transition: box-shadow 0.3s linear;
+}
+#magicButton2-3 {
+  cursor: pointer;
+  width: 100px;
+  height: 100px;
+  background-color: rgb(0, 117, 250);
+  border-radius: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+#magicButton2-3.open {
+  box-shadow: 15px 15px 10px rgb(126, 123, 113);
+  transition: box-shadow 1s;
+}
+#magicButton2-3.animate {
+  animation: hovering 2s infinite;
+}
+#magicButton2-2 {
+  width: 70%;
+  height: 70%;
+  background-color: rgb(68, 134, 255);
+  border-radius: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-shadow: 15px 15px 10px rgb(8, 113, 145);
+}
+#magicButton2-2.open {
+  box-shadow: none;
+  transition: box-shadow 0.3s linear;
+}
+#magicButton2-1 {
+  width: 55%;
+  height: 55%;
+  background-color: white;
+  border-radius: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 10px 10px 10px rgb(10, 112, 207);
+}
+#magicButton2-1.open {
+  box-shadow: none;
+  transition: box-shadow 0.3s linear;
+}
+#magicButton3-3 {
+  cursor: pointer;
+  width: 100px;
+  height: 100px;
+  background-color: #529265; 
+  border-radius: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+#magicButton3-3.open {
+  box-shadow: 15px 15px 10px rgb(126, 123, 113);
+  transition: box-shadow 1s;
+}
+#magicButton3-3.open.animate {
+  animation: hovering 2s infinite;
+}
+#magicButton3-2 {
+  width: 70%;
+  height: 70%;
+  background-color: #699e79;
+  border-radius: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-shadow: 15px 15px 10px #447453;
+}
+#magicButton3-2.open {
+  box-shadow: none;
+  transition: box-shadow 0.3s linear;
+}
+#magicButton3-1 {
+  width: 55%;
+  height: 55%;
+  background-color: white;
+  border-radius: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 10px 10px 10px #518360;
+}
+#magicButton3-1.open {
+  box-shadow: none;
+  transition: box-shadow 0.3s linear;
+}
+#magicButton4-3 {
+  cursor: pointer;
+  width: 100px;
+  height: 100px;
+  background-color: #fd664e;
+  border-radius: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+#magicButton4-3.open {
+  box-shadow: 15px 15px 10px rgb(126, 123, 113);
+  transition: box-shadow 1s;
+} 
+#magicButton4-3.animate {
+  animation: hovering 2s infinite;
+}
+#magicButton4-2 {
+  width: 70%;
+  height: 70%;
+  background-color: #FF715B;
+  border-radius: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-shadow: 15px 15px 10px #f74e34;
+}
+#magicButton4-2.open {
+  box-shadow: none;
+  transition: box-shadow 0.3s linear;
+}
+#magicButton4-1 {
+  width: 55%;
+  height: 55%;
+  background-color: white;
+  border-radius: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 10px 10px 10px #e94c33;
+}
+#magicButton4-1.open {
+  box-shadow: none;
+  transition: box-shadow 0.3s linear;
 }
 
-#cityListInfoContainer.show {
-  transform: scale(1);
-  transition: transform 0.3s;
+@keyframes hovering {
+  0% {
+    transform: translateX(0px);
+  }
+  50% {
+    transform: translateX(6px);
+  }
+  100% {
+    transform: translate(0px);
+  }
 }
 
-#clearHistoryBtn {
-  background-color: red;
+/* --------------------------------------------------BACKGROUNDS */
+
+#backGround {
+  width: 70%;
+  height: 60%;
+  opacity: 0;
+  z-index: -1;
+  background-color: white;
+  display: flex;
+  
+  justify-content: center;
 }
+
+#backGround.yellow{
+  background-color: #ffd92d;
+}
+#backGround.blue{
+  background-color: #2d99ff;
+}
+#backGround.green{
+  background-color: #527e5f;
+}
+#backGround.red{
+  background-color: #fa7f6c;
+}
+
+#backGround.show {
+  opacity: 1;
+  transition: opacity 0.2s;
+}
+
+#backGround.animate{
+  animation: colors 8s infinite linear;
+}
+
+@keyframes colors{
+  0% {
+    background-color: #ffd82d88;
+  }
+  25% {
+    background-color: #2d99ff85;
+  }
+  50% {
+    background-color: #527e5f7e;
+  }
+  75% {
+    background-color: #fa7f6c86;
+  }
+  100% {
+    background-color: #ffd82d83;
+  }
+}
+
+
+
+/* ------------------------------------------------------------- CONTENT */
+#pageContent {
+  transition: 1s;
+  opacity: 0;
+  width: 60%;
+}
+#pageContent.show {
+  transition: .3s;
+  opacity: 1;
+}
+
+#contentHeader {
+  text-align: center;
+  
+}
+
+
+
+.btnHeader{
+  margin-top: 25px;
+}
+
