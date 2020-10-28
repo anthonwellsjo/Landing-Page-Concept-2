@@ -1,10 +1,17 @@
 document.body.onload = loadApp;
 
 function loadApp() {
-    const app = document.getElementById("app");
-    app.innerHTML = page.create();
-    page.setBackgroundImage();
-    page.addEventHandlers();
+    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+        const app = document.getElementById("app");
+        app.innerHTML = page.renderOnlyDesktop();
+        page.setBackgroundImage();
+        
+    } else {
+        const app = document.getElementById("app");
+        app.innerHTML = page.create();
+        page.setBackgroundImage();
+        page.addEventHandlers();
+    }
 }
 
 interface Button {
@@ -87,13 +94,13 @@ const page = {
         )
     },
     renderNewPage: (page: Button) => {
-        setTimeout(()=>{
+        setTimeout(() => {
             document.getElementById("contentHeader").innerHTML = `<h1>${(() => { if (appData.currentPage !== undefined) { return appData.currentPage.header } else { return "" } })()}</h1>`;
             document.getElementById("content").innerHTML = `<p>${(() => { if (appData.currentPage !== undefined) { return appData.currentPage.content } else { return "" } })()}</p>`;
             document.getElementById("contentImg").setAttribute("src", "https://picsum.photos/200/300");
 
         }, 1000);
-        
+
     },
     closeAllOtherButtonsThan: (button: Button) => {
         let buttonsToTurnOff = [];
@@ -168,6 +175,11 @@ const page = {
     },
     showPageContent: () => {
         document.getElementById("pageContent").setAttribute("class", "show");
+    },
+    renderOnlyDesktop: () => {
+        return `
+        <h1 id="onlyDesktop">Only Desktop</h1>
+        `
     }
 }
 

@@ -37,10 +37,17 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 var _this = this;
 document.body.onload = loadApp;
 function loadApp() {
-    var app = document.getElementById("app");
-    app.innerHTML = page.create();
-    page.setBackgroundImage();
-    page.addEventHandlers();
+    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+        var app = document.getElementById("app");
+        app.innerHTML = page.renderOnlyDesktop();
+        page.setBackgroundImage();
+    }
+    else {
+        var app = document.getElementById("app");
+        app.innerHTML = page.create();
+        page.setBackgroundImage();
+        page.addEventHandlers();
+    }
 }
 var page = {
     create: function () {
@@ -140,6 +147,9 @@ var page = {
     },
     showPageContent: function () {
         document.getElementById("pageContent").setAttribute("class", "show");
+    },
+    renderOnlyDesktop: function () {
+        return "\n        <h1 id=\"onlyDesktop\">Only Desktop</h1>\n        ";
     }
 };
 var appData = {
